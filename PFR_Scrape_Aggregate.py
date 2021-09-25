@@ -244,7 +244,6 @@ def readData(**kwargs):
                     pd.DataFrame(df1).to_csv(csv_title)
                 
             lbl_hd_it += 1
-        print('Table scraping complete for week',row[team_head[0]])
             
 def build_df(year, week):
     count = 0
