@@ -1,5 +1,6 @@
 import os
 import pandas as pd, os
+import time
 
 from PFR_Scrape_Dict import teams,teams2,team_conv,months
 from PFR_Scrape_Dict import adv_sch,adv_years,adv_type
@@ -183,6 +184,7 @@ def readData(**kwargs):
     for index, row in df_int.iterrows():
         lbl_hd_it = 0
         enter_print = True
+        time.sleep(2)
         for h in head:
 
             try:
@@ -241,12 +243,11 @@ def readData(**kwargs):
                     pd.DataFrame(df1).to_csv(csv_title)
                 
             lbl_hd_it += 1
-    print('Table scraping complete for week',row[team_head[0]])
             
 def build_df(year, week):
     count = 0
     
-    for w in range(1,week+1):
+    for w in range(week,week+1):
         t_path =  './nfl_data' + '/' + str(year) + '/week' + str(w) +'/all_tables'
         t_list = os.listdir(t_path)
 
@@ -300,7 +301,9 @@ def build_df(year, week):
             
     return df_empty
 
-def buildAggregate(year,week):
+            
+
+def buildAggregate(**kwargs):
     """A database Aggregator that works in concert with the PFR webscraper tool 
     Pro Football Reference (PFR)
     
@@ -318,7 +321,19 @@ def buildAggregate(year,week):
     -------
     A single .csv file that aggregates all weekly stat data provided by PFR
     """   
-    for w in range(1,week+1):
+    year = int(kwargs.get('year', None))
+    week = int(kwargs.get('week', None))
+    multiple_weeks = kwargs.get('multiple_weeks', None)
+    
+    if multiple_weeks is None:
+        multiple_weeks = False
+    
+    if multiple_weeks == True:
+        start_week = 1
+    else:
+        start_week = week
+        
+    for w in range(start_week,week+1):
         t_path =  './nfl_data' + '/' + str(year) + '/week' + str(w) +'/all_tables'
         t_list = os.listdir(t_path)
         
@@ -366,6 +381,7 @@ def buildAggregate(year,week):
 
             count =+ 1
             
+
         df_int=df_int.reset_index()
         df_int=df_int[Head_struct]
         df_int = df_int.sort_values(['Tm', 'Position','Player'], ascending=[True, True, True])
