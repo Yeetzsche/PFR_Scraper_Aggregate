@@ -54,6 +54,7 @@ def convertDates(dd,year):
     dlist = []
     for i in dates:
         m = i.split(' ', 1)[0]
+
         m = months[m]
         d = i.split(' ', 1)[1]
         if len(d) < 2:
@@ -79,6 +80,11 @@ def buildWidgetBoxScore(year):
     
     #remove bye weeks
     dd = dd[dd.Opp != 'Bye Week']
+    dd = dd[dd.Week != 'Wild Card']
+    dd = dd[dd.Week != 'Division']
+    dd = dd[dd.Week != 'Conf. Champ.']
+    dd = dd[dd.Date != 'Playoffs']
+    
     dd = convertDates(dd,year)
     dd = dd.sort_values(by=['Date'])
     
