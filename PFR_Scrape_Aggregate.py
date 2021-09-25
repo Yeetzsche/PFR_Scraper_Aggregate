@@ -386,4 +386,4 @@ def buildAggregate(year,week):
         t = './nfl_data' + '/' + str(year) + '/week' + str(w) +'/CompiledData_week'+ str(w) + '.csv'
         pd.DataFrame(df_int).to_csv(t)
         pprint = 'Week' + str(w) + " Aggregated .csv complete."
-        print()
+        print(pprint)
