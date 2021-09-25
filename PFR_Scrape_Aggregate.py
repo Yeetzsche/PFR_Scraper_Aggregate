@@ -145,6 +145,7 @@ def readData(**kwargs):
     multiple_weeks = kwargs.get('multiple_weeks', None)
     
     dd = buildWidgetBoxScore(year)
+    dd['Week'] = dd['Week'].astype(int)
     
     head = dd.columns.values.tolist()
     head = [i for i in head if i not in ('Week','Date','Team','Home','Opp',
@@ -243,6 +244,7 @@ def readData(**kwargs):
                     pd.DataFrame(df1).to_csv(csv_title)
                 
             lbl_hd_it += 1
+        print('Table scraping complete for week',row[team_head[0]])
             
 def build_df(year, week):
     count = 0
@@ -337,7 +339,7 @@ def buildAggregate(**kwargs):
         t_path =  './nfl_data' + '/' + str(year) + '/week' + str(w) +'/all_tables'
         t_list = os.listdir(t_path)
         
-        df_shell = build_df(year, week)
+        df_shell = build_df(year, w)
         count = 0
         
         print('Polling all tables to intelligently build shell df...')
