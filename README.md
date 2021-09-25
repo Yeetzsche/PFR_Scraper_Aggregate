@@ -1,5 +1,5 @@
 # Pro Football Reference Game Data Webscraper
-Copyright Yeetzsche
+Code Copyright Yeetzsche
 
 ### This is a simple Pro Football Reference Webscraper that can either collect all game data per week of a given year, or collect all that data and then aggregate it into a single .csv file per week.
 
