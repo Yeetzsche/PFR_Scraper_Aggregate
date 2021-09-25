@@ -1,10 +1,6 @@
 import os
 import pandas as pd, os
 
-from PFR_Scrape_Dict import teams,teams2,adv_type,team_conv,months
-from PFR_Scrape_Dict import AdvPlayerDefHeaders,AdvPlayerPassHeaders,AdvPlayerRecHeaders
-from PFR_Scrape_Dict import AdvPlayerRushHeaders,PlayerDefHeaders,PlayerOffHeaders
-from PFR_Scrape_Dict import SnapCountHeaders,KickHeaders,ReturnHeaders
 from PFR_Scrape_Dict import teams,teams2,team_conv,months
 from PFR_Scrape_Dict import adv_sch,adv_years,adv_type
 from PFR_Scrape_Dict import AdvPlayerDefHeaders,AdvPlayerPassHeaders,AdvPlayerRecHeaders
@@ -249,14 +245,10 @@ def readData(**kwargs):
             
 def build_df(year, week):
     count = 0
-    count2 = 0
     
     for w in range(1,week+1):
         t_path =  './nfl_data' + '/' + str(year) + '/week' + str(w) +'/all_tables'
         t_list = os.listdir(t_path)
-        
-        count = 0
-        weekCount = 1
 
         for i in t_list:
             statSplit = i.split('_')
@@ -281,7 +273,7 @@ def build_df(year, week):
             df = df.drop(['Unnamed: 0'], axis=1)
             df = df.astype(str)
                 
-            if count2 > 0:
+            if count > 0:
                 merge_key = df_int.columns.intersection(df.columns)
                 merge_key = merge_key.tolist()
                 #Make sure each column is data type string
@@ -298,9 +290,8 @@ def build_df(year, week):
             else:    
                 oldDate = gameDate
                 df_int = df
-            count2 += 1
+            count += 1
             
-        count += 1
         if w == week:
             for col in df_int.columns:
                 if (col != 'Player') & (col != 'Tm') & (col != 'Position'):
@@ -308,8 +299,6 @@ def build_df(year, week):
             df_empty = df_int    
             
     return df_empty
-
-            
 
 def buildAggregate(year,week):
     """A database Aggregator that works in concert with the PFR webscraper tool 
@@ -335,7 +324,6 @@ def buildAggregate(year,week):
         
         df_shell = build_df(year, week)
         count = 0
-        weekCount = 1
         
         print('Polling all tables to intelligently build shell df...')
         df_shell = df_shell.set_index(['Player','Tm'])
@@ -378,7 +366,6 @@ def buildAggregate(year,week):
 
             count =+ 1
             
-
         df_int=df_int.reset_index()
         df_int=df_int[Head_struct]
         df_int = df_int.sort_values(['Tm', 'Position','Player'], ascending=[True, True, True])
