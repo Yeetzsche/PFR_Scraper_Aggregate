@@ -8,7 +8,7 @@ adv_sch = [
 ]
 
 adv_years = [
-    '2018', '2019', '2020'
+    '2018', '2019', '2020','2021'
 ]
 
 teams = [
@@ -30,7 +30,7 @@ teams2 = ['BUF', 'NWE', 'MIA', 'NYJ',
           'KAN', 'LVR', 'LAC', 'DEN',
           'NOR', 'ATL', 'CAR', 'TAM',
           'ARI', 'LAR', 'SEA', 'SFO'
-         ]
+          ]
 
 adv_type =[
     'passing_advanced','rushing_advanced', 'receiving_advanced', 
@@ -86,24 +86,6 @@ months = { 'January' : '01',
           'December' : '12'
 }
 
-WeekBuildCard = { '1' : '20200910',
-          '2' : '20200917',
-          '3' : '20200924',
-          '4' : '20201001', 
-          '5' : '20201008',
-          '6' : '20201015',
-          '7' : '20201022',
-          '8' : '20201029',
-          '9' : '20201105',
-          '10' : '20201112',
-          '11' : '20201119',
-          '12' : '20201126',
-          '13' : '20201203',
-          '14' : '20201210',
-          '15' : '20201217',
-          '16' : '20201225',
-          '17' : '20210103'
-}
 
 AdvPlayerDefHeaders = ['Player' , 'Tm', 'DefInt', 'DefTgt', 'DefCmp', 'DefCmp%', 'DefAllowYds', 'DefYds/Cmp', 
                     'DefYds/Tgt', 'DefAllowTD', 'DefAllowPassRating', 'DefDADOT','DefAir','DefAllowYAC', 'DefBlitz', 'DefQBHrry',
