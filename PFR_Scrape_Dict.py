@@ -30,8 +30,7 @@ teams2 = ['BUF', 'NWE', 'MIA', 'NYJ',
           'KAN', 'LVR', 'LAC', 'DEN',
           'NOR', 'ATL', 'CAR', 'TAM',
           'ARI', 'LAR', 'SEA', 'SFO'
-          
-    'ARI',]
+         ]
 
 adv_type =[
     'passing_advanced','rushing_advanced', 'receiving_advanced', 
