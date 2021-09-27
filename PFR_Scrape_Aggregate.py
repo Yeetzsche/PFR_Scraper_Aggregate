@@ -230,7 +230,7 @@ def readData(**kwargs):
                     enter_print = True
                 else:
                     enter_print = False
-                
+                         
                 if enter_print == True:
                     outdir = './nfl_data' + '/' + str(year) + '/week' + str(row[team_head[0]]) +'/all_tables/'
                     if not os.path.isdir(outdir):
@@ -263,14 +263,7 @@ def build_df(year, week):
             df["Date"] = gameDate
             teams = df.Tm.unique()
             df['Tm'] = df['Tm'].str.upper()
-            #Adding column of opponents
-            for j in teams:
-                if (len(teams) > 1):
-                    if (j == teams[0]):
-                        df.loc[df.Tm == j,"Opp"] = teams[1]
-                    else:
-                        df.loc[df.Tm == j,"Opp"] = teams[0]
-                
+
             df = df.fillna(0)
             df = df.drop(['Unnamed: 0'], axis=1)
             df = df.astype(str)
@@ -339,6 +332,7 @@ def buildAggregate(**kwargs):
         t_list = os.listdir(t_path)
         
         df_shell = build_df(year, w)
+        df_shell['Opp'] = ""
         count = 0
         
         print('Polling all tables to intelligently build shell df...')
