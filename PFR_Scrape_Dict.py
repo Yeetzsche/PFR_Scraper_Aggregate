@@ -86,6 +86,24 @@ months = { 'January' : '01',
           'December' : '12'
 }
 
+WeekBuildCard = { '1' : '20200910',
+          '2' : '20200917',
+          '3' : '20200924',
+          '4' : '20201001', 
+          '5' : '20201008',
+          '6' : '20201015',
+          '7' : '20201022',
+          '8' : '20201029',
+          '9' : '20201105',
+          '10' : '20201112',
+          '11' : '20201119',
+          '12' : '20201126',
+          '13' : '20201203',
+          '14' : '20201210',
+          '15' : '20201217',
+          '16' : '20201225',
+          '17' : '20210103'
+}
 
 AdvPlayerDefHeaders = ['Player' , 'Tm', 'DefInt', 'DefTgt', 'DefCmp', 'DefCmp%', 'DefAllowYds', 'DefYds/Cmp', 
                     'DefYds/Tgt', 'DefAllowTD', 'DefAllowPassRating', 'DefDADOT','DefAir','DefAllowYAC', 'DefBlitz', 'DefQBHrry',
@@ -119,7 +137,7 @@ KickHeaders = ['Player' , 'Tm', 'XPM', 'XPA', 'FGM', 'FGA',
 ReturnHeaders = ['Player' , 'Tm', 'KR#', 'KR_Yds', 'KR_Y/R', 'KR_TD', 
                     'KR_Lng', 'PR#','PR_Yds', 'PR_Y/R', 'PR_TD','PR_Lng' ]
 
-Head_struct = ['Player', 'Tm', 'Position', 'OffNum', 'Off%', 'DefNum', 'Def%', 
+Head_struct = ['Player', 'Tm', 'Position', 'Opp', 'OffNum', 'Off%', 'DefNum', 'Def%', 
                'STNum', 'ST%','PassCmp', 'PassAtt', 'PassYds', 'PassTD', 'PassInt','PassYds/Cmp', 'PassLng', 'PassRate', 
                'Pass1D', 'Pass1D%', 'PassIAY', 'PassIAY/PA', 'PassCAY', 'PassCAY/Cmp', 'PassCAY/PA','PassYAC','PassYAC/Cmp', 
                'PassDropPass', 'PassDropPass%', 'PassBadTh', 'PassBad%', 'PassSk','PassBlitz','PassHrry','PassHit','PassPrss',
